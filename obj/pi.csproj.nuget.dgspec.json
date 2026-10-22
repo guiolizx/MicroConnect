@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/guiolizx/Projects/pi/pi.csproj": {}
+    "/home/guiolizx/Projects/MicroConnect/pi.csproj": {}
   },
   "projects": {
-    "/home/guiolizx/Projects/pi/pi.csproj": {
+    "/home/guiolizx/Projects/MicroConnect/pi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/guiolizx/Projects/pi/pi.csproj",
+        "projectUniqueName": "/home/guiolizx/Projects/MicroConnect/pi.csproj",
         "projectName": "pi",
-        "projectPath": "/home/guiolizx/Projects/pi/pi.csproj",
+        "projectPath": "/home/guiolizx/Projects/MicroConnect/pi.csproj",
         "packagesPath": "/home/guiolizx/.nuget/packages/",
-        "outputPath": "/home/guiolizx/Projects/pi/obj/",
+        "outputPath": "/home/guiolizx/Projects/MicroConnect/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/guiolizx/.nuget/NuGet/NuGet.Config"
@@ -48,12 +48,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.32, 8.0.32]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -62,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.132/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.131/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
