@@ -1,0 +1,63 @@
+@{
+    Layout=null;
+    ViewData["Title"] = "Dashboard";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroConnect - @ViewData["Title"]</title>
+    <link rel="shortcut icon" href="~/assets/images/logoVariante2.svg?" type="svg">
+
+    <style>
+        @@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    </style>
+
+    <link rel="stylesheet" href="~/css/variables.css">
+    <link rel="stylesheet" href="~/css/nav.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+</head>
+
+<body>
+    <aside class="sidebar">
+        <nav>
+            <div class="logo">
+                <a asp-controller="Home" asp-action="Index"><img src="~/assets/images/logo.svg" alt="Logo"></a>
+            </div>
+            <div class="menuDash">
+                <ol class="menuDashItems">
+                    <li><a asp-controller="Dashboard" asp-action="Reserve" class="itemDash">Cliente</a></li>
+                    <li><a asp-controller="Dashboard" asp-action="Dashboard" class="itemDash">Produtor</a></li>
+                </ol>
+                <div>
+                    <ol class="logout">
+                        <li><a asp-controller="Home" asp-action="Index" id="back" class="buttonDash">Voltar</a></li>
+                        <li><a href="#" id="logout" class="itemDash">Sair</a></li>
+                    </ol>
+                </div>
+            </div>
+
+        </nav>
+
+    </aside>
+
+    <h2 class="title">Área do Cliente</h2>
+
+
+
+
+
+    <h2 class="title">Área do Produtor</h2>
+
+
+
+
+
+    <script src="#"></script>
+</body>
+
+</html>

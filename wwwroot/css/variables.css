@@ -1,0 +1,79 @@
+@font-face {
+  font-family: "Avenir";
+  src: url("../assets/fonts/AvenirRegular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+    --background: #EFFFC4;
+    --secondbackground: #CDDE9F;
+    --darkgreen100: #19350C;
+    --darkgreen50: #8C9A86;
+    --lightgreen100: #687D31;
+    --lightgreen50: #849A68;
+    --goldencolor: #B98A25;
+    --yellowcolor: #E3B843;
+    --white: #fff;
+    --grey: #D5D3CC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+}
+
+body {    
+    background-color: var(--background);
+}
+
+.text {
+    color: var(--white);
+}
+
+.text:hover {
+    color: var(--darkgreen100);
+}
+
+.title {
+    color: var(--darkgreen100);
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 3rem;
+    font-weight: 400;
+}
+
+.button {
+    background-color: var(--goldencolor);
+    padding: 0.5rem 3rem;
+    border-radius: 4px;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--yellowcolor);
+}
+
+.greenButton {
+    background-color: var(--lightgreen100);
+    padding: 0.5rem 3rem;
+    border-radius: 4px;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.greenButton:hover {
+    background-color: var(--lightgreen50);
+}
+
+.noRegister {
+    color: var(--darkgreen100);
+    font-style: italic;
+    text-align: center;
+    margin: 2rem;
+}

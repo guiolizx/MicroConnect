@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="~/assets/images/logoVariante2.svg?v=2" type="image/svg+xml">
+
+    <style>
+        @@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="~/css/variables.css">
+    <link rel="stylesheet" href="~/css/nav.css">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+        <div class="nav">
+            <a asp-controller="Home" asp-action="Index"><img src="~/assets/images/logoVariante2.svg" alt="Logo"></a>
+            <div class="navList">
+                <ol class="menu">
+                    <li><a asp-controller="Produto" asp-action="Produtos" class="text">Produtos</a></li>
+                    <li><a asp-controller="Produto" asp-action="Produtores" class="text">Produtores</a></li>
+                </ol>
+                <div>
+                    <ol class="loginArea">
+                        <li><a asp-controller="Auth" asp-action="Register" id="register" class="text">Cadastre-se</a></li>
+                        <li><a asp-controller="Auth" asp-action="Login" id="login" class="button">Login</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

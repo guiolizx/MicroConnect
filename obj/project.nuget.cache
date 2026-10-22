@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "pxz6ZKJ7LOZ6cZk53pslmvrcgeftYb7BZXgI3hykHNpbstmHMQw7kPdT00L4PCHTCAkD+HiSrHVtt+DeAfdm4Q==",
+  "success": true,
+  "projectFilePath": "/home/guiolizx/Projects/pi/pi.csproj",
+  "expectedPackageFiles": [
+    "/home/guiolizx/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.32/microsoft.aspnetcore.app.ref.8.0.32.nupkg.sha512"
+  ],
+  "logs": []
+}

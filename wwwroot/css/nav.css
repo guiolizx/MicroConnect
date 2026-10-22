@@ -1,0 +1,38 @@
+.text {
+    font-family: "Avenir", sans-serif;
+}
+
+.nav {
+    display: flex;
+    background-color: var(--lightgreen50);
+    padding: 1rem 3rem;
+}
+
+.nav img {
+    width: 90px;
+}
+
+.navList {
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    text-wrap: nowrap;
+    text-transform: uppercase;
+    color: var(--white);
+    justify-content: space-between;
+}
+
+.menu {
+    display: flex;
+    gap: 8rem;
+    width: 100%;
+    margin: 0 16rem;
+}
+
+.loginArea {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    justify-content: end;
+    align-items: center;
+}
