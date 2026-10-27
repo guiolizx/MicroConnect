@@ -14,8 +14,15 @@ builder.Services.AddEntityFrameworkMySQL().AddDbContext<BancoContext>(
     )
 );
 
+builder.Services.AddSession(o =>
+{
+    o.Cookie.HttpOnly = true;
+    o.Cookie.IsEssential = true;
+});
+
 builder.Services.AddScoped<IClienteRepository,ClienteRepository>();
 builder.Services.AddScoped<IProdutorRepository,ProdutorRepository>();
+builder.Services.AddScoped<IProdutoRepository,ProdutoRepository>();
 
 var app = builder.Build();
 
@@ -33,7 +40,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

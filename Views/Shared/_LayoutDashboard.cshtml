@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroConnect - Login</title>
+    <link rel="shortcut icon" href="~/assets/images/logoVariante2.svg" type="svg">
+
+    <style>
+            @@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    </style>
+
+    <link rel="stylesheet" href="~/css/variables.css">
+    <link rel="stylesheet" href="~/css/nav.css">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+
+<body class="dashboard-body">
+    <aside class="sidebar">
+        <nav>
+            <div class="logo">
+                <a asp-controller="Home" asp-action="Index"><img id="logo" src="~/assets/images/logo.svg"
+                                                                     alt="Logo"></a>
+                </div>
+                <div class="menuDash">
+                    <ol class="menuDashItems">
+                        <li><a asp-controller="Dashboard" asp-action="Reserve" class="itemDash">Cliente</a></li>
+                        <li><a asp-controller="Dashboard" asp-action="Dashboard" class="itemDash">Produtor</a></li>
+                    </ol>
+                    <ol class="logout">
+                        <li><a asp-controller="Auth" asp-action="Sair" id="logout" class="itemDash button">SAIR</a></li>
+                    </ol>
+
+                </div>
+
+            </nav>
+
+        </aside>
+        <div class="container Dashboard">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </body>
+
+</html>

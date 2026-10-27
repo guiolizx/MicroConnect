@@ -59,6 +59,7 @@ public class AuthController : Controller
             {
                 if (cliente.SenhaValida(model.Senha))
                 {
+                    HttpContext.Session.SetString("UserCliente", JsonConvert.SerializeObject(cliente));
                     return RedirectToAction("Reserve", "Dashboard");
                 }
                 TempData["ErrorMessage"] = "Senha Incorreta!";
@@ -73,15 +74,15 @@ public class AuthController : Controller
     [HttpPost]
     public IActionResult LoginProdutor(LoginProdutorViewModel model)
     {
-        Console.WriteLine(JsonConvert.SerializeObject(model));
         if (ModelState.IsValid)
         {
-            
+
             ProdutorModel produtor = _produtorContext.SearchByCNPJ(model.Cnpj);
             if (produtor != null)
             {
                 if (produtor.SenhaValida(model.Senha))
                 {
+                    HttpContext.Session.SetString("UserProdutor", JsonConvert.SerializeObject(produtor));
                     return RedirectToAction("Dashboard", "Dashboard");
                 }
                 TempData["ErrorMessage"] = "Senha Incorreta!";
@@ -130,7 +131,7 @@ public class AuthController : Controller
                 Telefone = model.Telefone,
                 Endereco = model.Endereco,
                 Email = model.Email,
-                Senha = model.Senha.genHash()
+                Senha = model.Senha
             };
 
             _produtorContext.Add(produtor);
@@ -141,6 +142,11 @@ public class AuthController : Controller
     }
 
 
+    public IActionResult Sair(){
+        HttpContext.Session.Remove("UserProdutor");
+        HttpContext.Session.Remove("UserCliente");
+        return RedirectToAction("Index","Home");
+    }
 
 
 

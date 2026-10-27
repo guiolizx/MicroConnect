@@ -15,13 +15,13 @@
     </div>
     <div class="label">
         <label for="cnpj">CNPJ</label>
-        <input type="text" id="cnpj" placeholder="Digite seu CNPJ" asp-for="Cnpj">
+        <input type="text" id="CNPJ" placeholder="Digite seu CNPJ" asp-for="Cnpj">
         <span asp-validation-for="Cnpj" class="text-danger"></span>
     </div>
     <div class="twoColumns">
         <div class="label">
             <label for="email">Telefone</label>
-            <input type="text" id="telefone" placeholder="Digite seu telefone principal" asp-for="Telefone">
+            <input type="text" id="tel" placeholder="Digite seu telefone principal" asp-for="Telefone">
             <span asp-validation-for="Telefone" class="text-danger"></span>
         </div>
         <div class="label">
@@ -48,3 +48,21 @@
     <button type="submit" class="registerButton">Cadastrar</button>
     </div>
 </form>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+
+
+<script>
+    Inputmask("**.***.***/****-99", {
+        definitions: {
+            '*': {
+                validator: "[A-Za-z0-9]"
+            }
+        },
+        removeMaskOnSubmit: true
+    }).mask("#CNPJ");
+
+    Inputmask("99 99999-9999", {
+        removeMaskOnSubmit: true
+    }).mask("#tel");
+</script>

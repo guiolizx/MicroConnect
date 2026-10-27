@@ -1,63 +1,116 @@
+@using Microsoft.AspNetCore.Components.Forms
+@model DashboardProdutorViewModel
+
 @{
-    Layout=null;
+    Layout = "_LayoutDashboard";
     ViewData["Title"] = "Dashboard";
+    var index = 0;
 }
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MicroConnect - @ViewData["Title"]</title>
-    <link rel="shortcut icon" href="~/assets/images/logoVariante2.svg?" type="svg">
+<h2 id="ds">Área do Produtor</h2>
 
-    <style>
-        @@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-    </style>
-
-    <link rel="stylesheet" href="~/css/variables.css">
-    <link rel="stylesheet" href="~/css/nav.css">
-    <link rel="stylesheet" href="~/css/style.css">
-
-</head>
-
-<body>
-    <aside class="sidebar">
-        <nav>
-            <div class="logo">
-                <a asp-controller="Home" asp-action="Index"><img src="~/assets/images/logo.svg" alt="Logo"></a>
+<div class="panel">
+    <div class="toppanel">
+        <div class="left">
+            <div class="campo">
+                <h3>Cliente</h3>
+                <h2 id="username">@Model.Produtor.Nome</h2>
             </div>
-            <div class="menuDash">
-                <ol class="menuDashItems">
-                    <li><a asp-controller="Dashboard" asp-action="Reserve" class="itemDash">Cliente</a></li>
-                    <li><a asp-controller="Dashboard" asp-action="Dashboard" class="itemDash">Produtor</a></li>
-                </ol>
-                <div>
-                    <ol class="logout">
-                        <li><a asp-controller="Home" asp-action="Index" id="back" class="buttonDash">Voltar</a></li>
-                        <li><a href="#" id="logout" class="itemDash">Sair</a></li>
-                    </ol>
+            <div class="campo">
+                <h3>CNPJ</h3>
+                <h2 id="CNPJ">@Model.Produtor.Cnpj</h2>
+            </div>
+            <div class="campo-horizontal">
+                <div class="campo">
+                    <h4>Email:</h4>
+                    <h5 id="email">@Model.Produtor.Email</h5>
+                </div>
+                <div class="campo">
+                    <h4>Senha:</h4>
+                    <h5 id="senha">***********</h5>
                 </div>
             </div>
+        </div>
+        <div class="right">
+            <a class="registerButton">ALTERAR DADOS</a>
+        </div>
+        
+    </div>
 
-        </nav>
+    <div class="separator"></div>
+    <h2 style="font-weight:200;">Cadastrar Produtos</h2>
+    <form asp-controller="Dashboard" asp-action="CadastrarProduto" method="post">
+        <div class="botform">
+            <label for="prod">Produto</label>
+            <input asp-for="Produto.Nome" type="text" id="prod">
+            <span asp-validation-for="Produto.Nome"></span>
+        </div>
+        <div class="topform">
+            <div class="inp">
+                <label for="safras">Época de Safra</label>
+                <select asp-for="Produto.Safra" id="safras" asp-items="Html.GetEnumSelectList<pi.Enums.Safras>()">
+                </select>
+                <span asp-validation-for="Produto.Safra"></span>
+            </div>
+            <div class="inp">
+                <label for="qtd">Quantidade Disponível</label>
+                <input asp-for="ProdutoProdutor.Quantidade" id="qtd" type="number">
+                <span asp-validation-for="ProdutoProdutor.Quantidade"></span>
+            </div>
+        </div>
+        <button class="addButton">ADICIONAR</button>
+    </form>
+    <div class="separator"></div>
+    <div class="tabela">
+        <table id="tabelaprodutos">
+            <thead>
+                <tr class="toprow">
+                    <th>Produto</th>
+                    <th>Época de Safra</th>
+                    <th>Quantidade Disponivel</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tpbody">
+                @foreach(var item in Model.Produtos)
+                {
+                    string classe;
+                    index++;
+                    if(index%2 == 0)
+                    {
+                        classe = "a";
+                    } else
+                    {
+                        classe = "b";
+                    }
+                    <tr class="@classe">
+                        <td>@item.Produto?.Nome</td>
+                        <td>@item.Produto?.Safra</td>
+                        <td>@item.Quantidade</td>
+                        <td class="opcoes">
+                            <a class="button" asp-controller="Dashboard" asp-action="EditarItem">EDITAR</a>
+                            <a class="button" asp-controller="Dashboard" asp-action="ExcluirItem">EXCLUIR</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
 
-    </aside>
 
-    <h2 class="title">Área do Cliente</h2>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
 
-
-
-
-
-    <h2 class="title">Área do Produtor</h2>
-
-
-
-
-
-    <script src="#"></script>
-</body>
-
-</html>
+<script>
+    Inputmask("**.***.***/****-99", {
+        definitions: {
+            '*': {
+                validator: "[A-Za-z0-9]"
+            }
+        },
+        removeMaskOnSubmit: true
+    }).mask("#CNPJ");
+</script>
