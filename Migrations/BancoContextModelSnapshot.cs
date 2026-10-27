@@ -122,6 +122,12 @@ namespace pi.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("ds_email");
 
+                    b.Property<string>("Endereco")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("ds_endereco");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(150)

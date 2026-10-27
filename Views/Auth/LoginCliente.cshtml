@@ -1,0 +1,36 @@
+@model LoginClienteViewModel
+@{
+    ViewData["Title"] = "MicroConnect - Login";
+}
+<h1 class="title">Faça seu login cliente!</h1>
+<form class="form" asp-controller="Auth" asp-action="LoginCliente" method="post">
+    <div class="label">
+        <label for="email">CPF</label>
+        <input type="text" id="CPF" placeholder="xxx.xxx.xxx-xx" asp-for="Cpf">
+        <span asp-validation-for="Cpf"></span>
+    </div>
+    <div class="label">
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="Digite sua senha" asp-for="Senha">
+        <span asp-validation-for="Senha"></span>
+    </div>
+
+    <div class="loginArea">
+    <p class="resetPassword"><a href="/resetPassword.html">Esqueci minha senha</a></p>
+    <button class="registerButton">Entrar</button>
+    </div>
+</form>
+@if(TempData["ErrorMessage"] != null)
+{
+    <div class="message">
+        <p class="ErrorMessage">@TempData["ErrorMessage"]</p>
+    </div>
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+
+<script>
+    Inputmask("999.999.999-99", {
+        removeMaskOnSubmit: true
+    }).mask("#CPF");
+</script>

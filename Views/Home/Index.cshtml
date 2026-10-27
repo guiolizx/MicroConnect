@@ -9,6 +9,10 @@
         <img class="headerImage" src="./assets/images/foto_destaque2.jpeg" alt="Imagem Destaque 2">
     </div>
 
+    
+</header>
+
+<div class="banner">
     <div class="buttonsHighlights">
 
         <button class="ballButton selected"></button>
@@ -16,7 +20,11 @@
         <button class="ballButton"></button>
 
     </div>
-</header>
+    <div class="btns">
+        <a asp-controller="Auth" asp-action="RegisterCliente" class="RCButton">Seja Cliente</a>
+        <a asp-controller="Auth" asp-action="RegisterProdutor" class="RPButton">Torne-se Produtor</a>
+    </div>
+</div>
 
 <h2 class="title">Destaques da Estação</h2>
 
@@ -26,6 +34,6 @@
 
 <a class="seeMore">VER MAIS</a>
 
-@section Scripts{
+@section Scripts {
     <script src="~/js/slideshow.js"></script>
 }

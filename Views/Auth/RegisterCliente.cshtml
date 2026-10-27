@@ -1,0 +1,38 @@
+@model RegisterClienteViewModel
+
+@{
+    ViewData["Title"] = "MicroConnect - Cadastrar Cliente";
+}
+
+<h1 class="title">Cadastre-se Cliente</h1>
+
+<form class="form" asp-controller="Auth" asp-action="RegisterCliente" method="post">
+    @Html.AntiForgeryToken()
+    <div class="label">
+        <label for="name">Nome</label>
+        <input asp-for="Nome" type="text" id="name" placeholder="Digite seu nome">
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="label">
+        <label for="cnpj">CPF</label>
+        <input asp-for="Cpf" type="text" id="cnpj" placeholder="Digite seu CPF">
+        <span asp-validation-for="Cpf" class="text-danger"></span>
+    </div>
+    <div class="twoColumns">
+        <div class="label">
+            <label for="email">Email</label>
+            <input asp-for="Email"type="email" id="email" placeholder="Digite seu e-mail principal">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="label">
+            <label for="password">Senha</label>
+            <input asp-for="Senha" type="password" id="password" placeholder="******">
+            <span asp-validation-for="Senha" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="loginArea">
+    <p class="textLogin">Já tem conta? <a href="/login.html">Login</a></p>
+    <button type="submit" class="registerButton">Cadastrar</button>
+    </div>
+</form>

@@ -3,7 +3,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: visible;
+
 }
 
 .headerImage {
@@ -14,9 +16,26 @@
   display: none;
 }
 
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem 3rem;
+  background-color: var(--secondbackground);
+  padding: 2rem 1rem;
+  margin: 0 0;
+}
+
+.btns{
+  display: flex;
+  gap: 1rem;
+}
+
 .active {
   display: block;
 }
+
 
 .ballButton {
   background-color: var(--darkgreen100);
@@ -101,6 +120,7 @@
   font-weight: 400;
 }
 
+
 .textLogin a {
   text-decoration: none;
   color: var(--goldencolor);
@@ -136,4 +156,71 @@
 
 .resetPassword a:hover {
   color: var(--darkgreen100);
+}
+
+.CButton {
+  text-align: center;
+  background-color: var(--lightgreen100);
+  color: var(--white);
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+.CButton:hover {
+  background-color: var(--darkgreen100);
+}
+
+.PButton {
+  background-color: var(--goldencolor);
+  color: var(--white);
+  text-align: center;
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+}
+
+.RCButton {
+  all: unset;
+  background-color: var(--lightgreen100);
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  color: var(--white);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  width: 200px;
+  text-align: center;
+}
+
+.RPButton{
+  all: unset;
+  background-color: var(--goldencolor);
+  width: 200px;
+  text-align: center;
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  color: var(--white);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.ErrorMessage{
+  width: 590px;
+  background-color: rgb(255, 172, 172);
+  color:rgb(108, 24, 24);
+  text-align: center;
+  padding: 1rem;
+  margin: 8px;
+  border-radius: 4px;
+  font-size: 16px;
+
+}
+
+.message{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

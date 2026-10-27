@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using teste.Helper;
 
 namespace pi.Models;
 
@@ -28,4 +29,14 @@ public class ClienteModel
     [Required]
     [Column("pw_senha_cliente")]
     public string Senha {get;set;}
+
+    public void setHash()
+    {
+        Senha = Senha.genHash();
+    }
+
+    public bool SenhaValida(string password)
+    {
+        return Senha == password.genHash();
+    }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using teste.Helper;
 
 namespace pi.Models;
 
@@ -33,6 +34,21 @@ public class ProdutorModel
     public string Email {get;set;}
 
     [Required]
+    [StringLength(150)]
+    [Column("ds_endereco")]
+    public string Endereco {get;set;}
+
+    [Required]
     [Column("pw_senha_produtor")]
     public string Senha {get;set;}
+
+    public void setHash()
+    {
+        Senha = Senha.genHash();
+    }
+
+    public bool SenhaValida(string password)
+    {
+        return Senha == password.genHash();
+    }
 }

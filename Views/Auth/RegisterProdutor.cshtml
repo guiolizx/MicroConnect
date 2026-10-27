@@ -1,0 +1,50 @@
+@model RegisterProdutorViewModel
+
+@{
+    ViewData["Title"] = "MicroConnect - Cadastrar Produtor";
+}
+
+<h1 class="title">Cadastre-se Produtor</h1>
+
+<form class="form" asp-controller="Auth" asp-action="RegisterProdutor" method="post">
+    @Html.AntiForgeryToken()
+    <div class="label">
+        <label for="name">Nome</label>
+        <input type="text" id="name" placeholder="Digite seu nome" asp-for="Nome">
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="label">
+        <label for="cnpj">CNPJ</label>
+        <input type="text" id="cnpj" placeholder="Digite seu CNPJ" asp-for="Cnpj">
+        <span asp-validation-for="Cnpj" class="text-danger"></span>
+    </div>
+    <div class="twoColumns">
+        <div class="label">
+            <label for="email">Telefone</label>
+            <input type="text" id="telefone" placeholder="Digite seu telefone principal" asp-for="Telefone">
+            <span asp-validation-for="Telefone" class="text-danger"></span>
+        </div>
+        <div class="label">
+            <label for="password">Endereco</label>
+            <input type="text" id="endereco" placeholder="Digite seu endereco" asp-for="Endereco">
+            <span asp-validation-for="Endereco" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="twoColumns">
+        <div class="label">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Digite seu e-mail principal" asp-for="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="label">
+            <label for="password">Senha</label>
+            <input type="password" id="password" placeholder="******" asp-for="Senha">
+            <span asp-validation-for="Senha" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="loginArea">
+    <p class="textLogin">Já tem conta? <a href="/login.html">Login</a></p>
+    <button type="submit" class="registerButton">Cadastrar</button>
+    </div>
+</form>

@@ -1,0 +1,42 @@
+@model LoginProdutorViewModel
+@{
+    ViewData["Title"] = "MicroConnect - Login";
+}
+
+<h1 class="title">Faça seu login produtor!</h1>
+<form class="form" asp-controller="Auth" asp-action="LoginProdutor" method="post">
+    <div class="label">
+        <label for="email">CNPJ</label>
+        <input type="text" id="CNPJ" placeholder="Digite seu CNPJ cadastrado" asp-for="Cnpj">
+        <span asp-validation-for="Cnpj"></span>
+    </div>
+    <div class="label">
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="Digite sua senha" asp-for="Senha">
+        <span asp-validation-for="Senha"></span>
+    </div>
+
+    <div class="loginArea">
+    <p class="resetPassword"><a href="/resetPassword.html">Esqueci minha senha</a></p>
+    <button type="submit" class="registerButton">Entrar</button>
+    </div>
+</form>
+@if(TempData["ErrorMessage"] != null)
+{
+    <div class="message">
+        <p class="ErrorMessage">@TempData["ErrorMessage"]</p>
+    </div>
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+
+<script>
+    Inputmask("**.***.***/****-99", {
+        definitions: {
+            '*':{
+                validator: "[A-Za-z0-9]"
+            }
+        },
+        removeMaskOnSubmit: true
+    }).mask("#CNPJ");
+</script>

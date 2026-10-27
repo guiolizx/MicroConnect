@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MySql.EntityFrameworkCore.Extensions;
 using pi.Data;
+using pi.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,9 @@ builder.Services.AddEntityFrameworkMySQL().AddDbContext<BancoContext>(
         builder.Configuration.GetConnectionString("Default")
     )
 );
+
+builder.Services.AddScoped<IClienteRepository,ClienteRepository>();
+builder.Services.AddScoped<IProdutorRepository,ProdutorRepository>();
 
 var app = builder.Build();
 
