@@ -8,9 +8,9 @@
 }
 
 
-<h2 id="ds">Área do Produtor</h2>
+<h2 style="position: relative; top:50px;" id="ds">Área do Produtor</h2>
 
-<div class="panel">
+<div class="panel" style="position:relative; top:50px;">
     <div class="toppanel">
         <div class="left">
             <div class="campo">
@@ -89,8 +89,8 @@
                         <td>@item.Produto?.Safra</td>
                         <td>@item.Quantidade</td>
                         <td class="opcoes">
-                            <a class="button" asp-controller="Dashboard" asp-action="EditarItem">EDITAR</a>
-                            <a class="button" asp-controller="Dashboard" asp-action="ExcluirItem">EXCLUIR</a>
+                            <a class="button" asp-controller="Dashboard" asp-action="EditarProduto" asp-route-id="@item.Produto?.IdProduto">EDITAR</a>
+                            <a class="button" asp-controller="Dashboard" asp-action="ExcluirProduto">EXCLUIR</a>
                         </td>
                     </tr>
                 }

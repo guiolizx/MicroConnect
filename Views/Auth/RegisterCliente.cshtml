@@ -15,7 +15,7 @@
     </div>
     <div class="label">
         <label for="cnpj">CPF</label>
-        <input asp-for="Cpf" type="text" id="cnpj" placeholder="Digite seu CPF">
+        <input asp-for="Cpf" type="text" id="cpf" placeholder="Digite seu CPF">
         <span asp-validation-for="Cpf" class="text-danger"></span>
     </div>
     <div class="twoColumns">
@@ -36,3 +36,12 @@
     <button type="submit" class="registerButton">Cadastrar</button>
     </div>
 </form>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+
+<script>
+    Inputmask("999.999.999-99", {
+        removeMaskOnSubmit: true
+    }).mask("#cpf");
+</script>

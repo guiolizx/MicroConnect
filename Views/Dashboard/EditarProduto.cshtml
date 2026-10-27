@@ -1,0 +1,63 @@
+@model EditarProdutoModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Editar Produto";
+}
+
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+</style>
+
+<link rel="stylesheet" href="~/css/variables.css">
+<link rel="stylesheet" href="~/css/nav.css">
+<link rel="stylesheet" href="~/css/style.css">
+
+<form class="form"
+      asp-controller="Dashboard"
+      asp-action="EditarProduto"
+      method="post">
+
+    <h1 class="title">Editar o produto @Model.Nome</h1>
+
+    <input type="hidden" asp-for="IdProduto" />
+    
+
+    <div class="botform">
+        <label asp-for="Nome">Nome</label>
+        <input asp-for="Nome" type="text" id="prod">
+        <span asp-validation-for="Nome"></span>
+    </div>
+
+    <div class="topform">
+        <div class="inp">
+            <label asp-for="Safra">Época de Safra</label>
+
+            <select asp-for="Safra"
+                    id="safras"
+                    asp-items="Html.GetEnumSelectList<pi.Enums.Safras>()">
+            </select>
+
+            <span asp-validation-for="Safra"></span>
+        </div>
+
+        <div class="inp">
+            <label asp-for="Quantidade">
+                Quantidade Disponível
+            </label>
+
+            <input asp-for="Quantidade"
+                   id="qtd"
+                   type="number"
+                   min="0">
+
+            <span asp-validation-for="Quantidade"></span>
+        </div>
+    </div>
+
+    <button class="saveButton" type="submit">Salvar</button>
+</form>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

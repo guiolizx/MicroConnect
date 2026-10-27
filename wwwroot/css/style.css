@@ -1,3 +1,23 @@
+/* ==========================================================
+   Variáveis de layout
+   ========================================================== */
+:root {
+  --sidebar-width: 280px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ==========================================================
+   Slideshow / Banner
+   ========================================================== */
 .slideshow {
   display: flex;
   flex-direction: column;
@@ -5,7 +25,7 @@
   justify-content: center;
   overflow-x: hidden;
   overflow-y: visible;
-
+  width: 100%;
 }
 
 .headerImage {
@@ -24,18 +44,19 @@
   gap: 2rem 3rem;
   background-color: var(--secondbackground);
   padding: 2rem 1rem;
-  margin: 0 0;
+  margin: 0;
 }
 
 .btns {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
 }
 
 .active {
   display: block;
 }
-
 
 .ballButton {
   background-color: var(--darkgreen100);
@@ -72,9 +93,13 @@
   background-color: var(--yellowcolor);
 }
 
+/* ==========================================================
+   Formulários
+   ========================================================== */
 .form {
   display: flex;
   flex-direction: column;
+  width: calc(100% - 2rem);
   max-width: 35rem;
   background-color: var(--secondbackground);
   border-radius: 4px;
@@ -97,6 +122,7 @@
   border: solid 1px var(--darkgreen100);
   border-radius: 2px;
   color: var(--darkgreen100);
+  width: 100%;
 }
 
 .label input:focus {
@@ -111,6 +137,7 @@
 
 .twoColumns .label {
   flex: 1;
+  min-width: 0;
 }
 
 .textLogin {
@@ -119,7 +146,6 @@
   color: var(--darkgreen100);
   font-weight: 400;
 }
-
 
 .textLogin a {
   text-decoration: none;
@@ -139,6 +165,7 @@
   cursor: pointer;
   text-transform: uppercase;
   font-size: 0.75rem;
+  text-align: center;
 }
 
 .registerButton:hover {
@@ -158,6 +185,9 @@
   color: var(--darkgreen100);
 }
 
+/* ==========================================================
+   Botões
+   ========================================================== */
 .CButton {
   text-align: center;
   background-color: var(--lightgreen100);
@@ -165,7 +195,6 @@
   padding: 0.5rem 2rem;
   border-radius: 4px;
   cursor: pointer;
-
 }
 
 .CButton:hover {
@@ -190,13 +219,16 @@
   text-transform: uppercase;
   font-size: 0.75rem;
   width: 200px;
+  max-width: 100%;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .RPButton {
   all: unset;
   background-color: var(--goldencolor);
   width: 200px;
+  max-width: 100%;
   text-align: center;
   padding: 0.5rem 2rem;
   border-radius: 4px;
@@ -204,10 +236,15 @@
   cursor: pointer;
   text-transform: uppercase;
   font-size: 0.75rem;
+  box-sizing: border-box;
 }
 
+/* ==========================================================
+   Mensagens
+   ========================================================== */
 .ErrorMessage {
-  width: 590px;
+  width: 100%;
+  max-width: 590px;
   background-color: rgb(255, 172, 172);
   color: rgb(108, 24, 24);
   text-align: center;
@@ -215,25 +252,34 @@
   margin: 8px;
   border-radius: 4px;
   font-size: 16px;
-
 }
 
 .message {
-
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 0.5rem;
 }
 
+/* ==========================================================
+   Sidebar / Dashboard
+   ========================================================== */
 .sidebar {
   background-color: var(--lightgreen50);
   position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
   height: 100dvh;
+  overflow-y: auto;
+  z-index: 10;
 }
 
 .sidebar #logo {
   height: 165px;
   margin: 32px;
+  max-width: calc(100% - 64px);
+  object-fit: contain;
 }
 
 .dashboard-body {
@@ -255,6 +301,22 @@
   align-items: center;
 }
 
+
+.saveButton{
+  all: unset;
+  position: relative;
+  background-color: var(--lightgreen100);
+  padding: 0.5rem 0rem;
+  border-radius: 4px;
+  color: var(--white);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  text-align: center;
+  width: 94%;
+  left:1rem;
+}
+
 .logout {
   flex: 1;
   display: flex;
@@ -262,12 +324,39 @@
   justify-content: center;
 }
 
+.Dashboard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  width: calc(100% - var(--sidebar-width));
+  margin-left: var(--sidebar-width);
+  margin-top: 140px;
+  padding: 0 1.5rem 2rem;
+}
+
+/* ==========================================================
+   Painel
+   ========================================================== */
+.panel {
+  
+  
+  background-color: rgba(104, 125, 49, 0.25);
+  width: 100vw;
+  
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
 .panel button {
   margin-top: 4px;
   background-color: #687D31;
   color: white;
   border: none;
-
   display: flex;
   padding: 4px 24px;
   justify-content: center;
@@ -275,24 +364,14 @@
   gap: 10px;
 }
 
-.panel {
-  position: relative;
-  background-color: rgba(104, 125, 49, 0.25);
-  
-  width: 1000px;
-  height: auto;
+.toppanel {
   display: flex;
-  flex-direction: column;
-  padding: 16px;
-}
-
-table {
-  width: 644.5px;
+  flex: 1;
+  gap: 1rem;
 }
 
 .toprow {
   color: #19350C;
-
 }
 
 th {
@@ -320,17 +399,16 @@ th {
   font-size: 30px;
 }
 
-
-
 .campo-horizontal {
   display: flex;
-  gap: 256px
+  flex-wrap: wrap;
+  gap: 1rem clamp(1rem, 10vw, 256px);
 }
 
 .right {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
   justify-content: center;
   width: 100%;
 }
@@ -339,36 +417,17 @@ th {
   position: relative;
   top: 100px;
   padding: 8px 48px;
-
-
 }
 
 .table {
   flex: 1;
-}
-
-.toppanel {
-  display: flex;
-  flex: 1;
-}
-
-.Dashboard {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 500px;
-  width: 75%;
-  left: 310px;
-  top: 140px;
+  min-width: 0;
 }
 
 .campo h3 {
   font-size: 24px;
   font-family: "Avenir", sans-serif;
   font-weight: 100;
-
 }
 
 .campo h2 {
@@ -377,6 +436,9 @@ th {
   font-family: "Avenir", sans-serif;
 }
 
+/* ==========================================================
+   Formulário do painel
+   ========================================================== */
 .topform {
   display: flex;
   gap: 1rem;
@@ -389,24 +451,26 @@ th {
   padding: 1rem;
 }
 
-
-
 .inp {
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-width: 0;
 }
 
-.inp input, .inp select, .botform input{
+.inp input,
+.inp select,
+.botform input {
   height: 38px;
+  width: 100%;
 }
 
 .addButton {
-  
   margin: 1rem;
   background-color: var(--lightgreen100);
   border-radius: 4px;
-  width: 968px;
+  width: calc(100% - 2rem);
+  max-width: 968px;
   color: var(--white);
   cursor: pointer;
   height: 38px;
@@ -414,54 +478,255 @@ th {
   text-align: center;
 }
 
-.separator{
-  
+.separator {
   width: 100%;
   height: 2px;
-  margin: 1rem 0px;
-  background-color: var(--lightgreen100)
+  margin: 1rem 0;
+  background-color: var(--lightgreen100);
 }
 
-.tabela{
+/* ==========================================================
+   Tabela
+   ========================================================== */
+.tabela {
   display: flex;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-table{
-  flex:1;
+table {
+  flex: 1;
+  width: 100%;
+  min-width: 480px; /* rola na horizontal em telas pequenas */
   border-collapse: separate;
   border-spacing: 0;
 }
 
-.a{
+.a {
   background-color: var(--lightgreen100);
 }
 
-.b{
-  background-color:  var(--lightgreen50);
-}
-
-thead tr{
-  
+.b {
+  background-color: var(--lightgreen50);
 }
 
 thead th {
   padding: 1rem;
+  border: solid 2px black;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 4px;
 }
 
-tbody tr{
+tbody tr {
   background-color: var(--secondbackground);
-
 }
 
-tbody td{
+tbody td {
   text-align: center;
+  border: solid 2px black;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
-.opcoes{
-  
+.opcoes {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 4px;
 }
+
+/* ==========================================================
+   RESPONSIVO
+   ========================================================== */
+
+/* Tablets e notebooks pequenos */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 220px;
+  }
+
+  .sidebar #logo {
+    height: 120px;
+    margin: 24px;
+  }
+
+  .Dashboard {
+    margin-top: 100px;
+    padding: 0 1rem 2rem;
+  }
+
+  .left h2,
+  .campo h2 {
+    font-size: 26px;
+  }
+
+  .left h3,
+  .campo h3 {
+    font-size: 20px;
+  }
+}
+
+/* Tablets em retrato / celulares grandes */
+@media (max-width: 768px) {
+  /* Sidebar vira barra superior */
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .sidebar #logo {
+    height: 80px;
+    margin: 16px;
+  }
+
+  .dashboard-body {
+    flex-direction: column;
+  }
+
+  .menuDash {
+    height: auto;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    padding: 0 1rem 1rem;
+  }
+
+  .menuDashItems {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+
+  .logout {
+    flex: 0 0 auto;
+  }
+
+  .Dashboard {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 1.5rem;
+    min-height: 0;
+    padding: 0 1rem 2rem;
+  }
+
+  .toppanel {
+    flex-direction: column;
+  }
+
+  .right {
+    align-items: stretch;
+  }
+
+  .right .registerButton {
+    top: 0;
+    margin-top: 1rem;
+    padding: 8px 24px;
+  }
+
+  .topform {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .botform {
+    padding: 0.5rem;
+  }
+
+  .addButton {
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+  }
+
+  .campo-horizontal {
+    gap: 1rem 2rem;
+  }
+
+  .twoColumns {
+    gap: 1rem;
+  }
+
+  .banner {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  .form {
+    padding: 1.25rem;
+    margin: 1.5rem auto;
+  }
+
+  .twoColumns {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .panel {
+    padding: 8px;
+  }
+
+  .Dashboard {
+    padding: 0 0.5rem 1.5rem;
+  }
+
+  .campo-horizontal {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .left h2,
+  .campo h2 {
+    font-size: 22px;
+  }
+
+  .left h3,
+  .campo h3 {
+    font-size: 18px;
+  }
+
+  .ErrorMessage {
+    font-size: 14px;
+    padding: 0.75rem;
+  }
+
+  .seeMore {
+    padding: 0.5rem 1.5rem;
+  }
+
+  .CButton,
+  .PButton {
+    padding: 0.5rem 1.25rem;
+  }
+
+  .RCButton,
+  .RPButton {
+    width: 100%;
+  }
+
+  thead th {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  tbody td {
+    font-size: 0.875rem;
+  }
+}
+
+
