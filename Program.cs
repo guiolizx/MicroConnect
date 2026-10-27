@@ -1,7 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using MySql.EntityFrameworkCore.Extensions;
+using pi.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddEntityFrameworkMySQL().AddDbContext<BancoContext>(
+    o => o.UseMySQL(
+        builder.Configuration.GetConnectionString("Default")
+    )
+);
 
 var app = builder.Build();
 
