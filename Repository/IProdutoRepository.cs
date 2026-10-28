@@ -10,6 +10,9 @@ public interface IProdutoRepository
     ProdutoModel BuscarPorId(int idProduto);
     void Edit(ProdutoModel produto,
     ProdutoProdutorModel pprodutor);
+    List<ProdutoModel> BuscarTodos();
+    List<ProdutoProdutorModel> BuscarTodosComProdutores();
 
     ProdutoProdutorModel BuscarRelacionamento(int idProduto, int idProdutor);
+    void Delete(int idProduto, int idProdutor);
 }

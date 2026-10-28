@@ -18,19 +18,43 @@ public class ProdutoRepository : IProdutoRepository
         using var transacao = _bancoContext.Database.BeginTransaction();
         try
         {
-            _bancoContext.Produto.Add(produto);
-            _bancoContext.SaveChanges();
 
-            var produtoProdutor = new ProdutoProdutorModel
+            var nome = produto.Nome.Trim().ToLower();
+
+            var produtoExistente = _bancoContext.Produto.FirstOrDefault(p => p.Nome.ToLower() == nome);
+
+            if (produtoExistente == null)
             {
-                IdProduto = produto.IdProduto,
-                IdProdutor = idProdutor,
-                Quantidade = quantidade
-            };
+                produto.Nome = produto.Nome.Trim();
 
-            _bancoContext.ProdutoProdutor.Add(produtoProdutor);
+                _bancoContext.Produto.Add(produto);
+                _bancoContext.SaveChanges();
+
+                produtoExistente = produto;
+            }
+
+
+            var relacaoExistente = _bancoContext.ProdutoProdutor
+                .FirstOrDefault(pp =>
+                    pp.IdProduto == produtoExistente.IdProduto &&
+                    pp.IdProdutor == idProdutor
+                );
+
+            if (relacaoExistente == null)
+            {
+                var produtoProdutor = new ProdutoProdutorModel
+                {
+                    IdProduto = produtoExistente.IdProduto,
+                    IdProdutor = idProdutor,
+                    Quantidade = quantidade
+                };
+                _bancoContext.ProdutoProdutor.Add(produtoProdutor);
+            }
+            else
+            {
+                relacaoExistente.Quantidade = quantidade;
+            }
             _bancoContext.SaveChanges();
-
             transacao.Commit();
         }
         catch
@@ -46,6 +70,19 @@ public class ProdutoRepository : IProdutoRepository
             .Where(p => p.IdProdutor == idProdutor)
             .Include(p => p.Produto)
             .ToList();
+    }
+
+    public List<ProdutoModel> BuscarTodos()
+    {
+        return _bancoContext.Produto.ToList();
+    }
+
+    public List<ProdutoProdutorModel> BuscarTodosComProdutores()
+    {
+        return _bancoContext.ProdutoProdutor
+                    .Include(pp => pp.Produto)
+                    .Include(pp => pp.Produtor)
+                    .ToList();
     }
 
     public ProdutoModel BuscarPorId(int idProduto)
@@ -82,6 +119,14 @@ public class ProdutoRepository : IProdutoRepository
                 pp.IdProduto == idProduto &&
                 pp.IdProdutor == idProdutor
             );
+    }
+
+    public void Delete(int idProduto, int idProdutor)
+    {
+        ProdutoProdutorModel ppDb = BuscarRelacionamento(idProduto,idProdutor);
+        if(ppDb == null) return;
+        _bancoContext.ProdutoProdutor.Remove(ppDb);
+        _bancoContext.SaveChanges();
     }
 
 }

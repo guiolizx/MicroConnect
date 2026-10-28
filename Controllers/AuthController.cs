@@ -33,16 +33,27 @@ public class AuthController : Controller
 
     public IActionResult LoginArea()
     {
+        var uc = HttpContext.Session.GetString("UserCliente");
+        var up = HttpContext.Session.GetString("UserProdutor");
+        Console.WriteLine(up);
+        if(!string.IsNullOrEmpty(uc)) return RedirectToAction("Reserve","Dashboard");
+        else if(!string.IsNullOrEmpty(up)) return RedirectToAction("Dashboard","Dashboard");
         return View();
     }
 
     public IActionResult LoginCliente()
     {
+        var uc = HttpContext.Session.GetString("UserCliente");
+        if(!string.IsNullOrEmpty(uc)) return RedirectToAction("Reserve","Dashboard");
         return View();
     }
 
     public IActionResult LoginProdutor()
     {
+        
+        var up = HttpContext.Session.GetString("UserProdutor");
+        
+        if(!string.IsNullOrEmpty(up)) return RedirectToAction("Dashboard","Dashboard");
         return View();
     }
 

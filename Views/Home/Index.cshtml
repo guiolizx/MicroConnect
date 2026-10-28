@@ -1,5 +1,28 @@
-﻿@{
+﻿@using pi.Enums
+@model List<ProdutoHomeViewModel>;
+
+@{
     ViewData["Title"] = "MicroConnect - Seja bem-vindo(a)";
+    int index = 1;
+    string classe = "a";
+    Safras safraAtual;
+    var hoje = DateTime.Now;
+    int data = hoje.Month * 100 + hoje.Day;
+    switch (data)
+    {
+        case >= 1221 or < 320:
+            safraAtual = Safras.Verao;
+            break;
+        case >= 320 and < 621:
+            safraAtual = Safras.Outono;
+            break;
+        case >= 621 and < 923:
+            safraAtual = Safras.Inverno;
+            break;
+        default:
+            safraAtual = Safras.Primavera;
+            break;
+    }
 }
 
 <header class="slideshow">
@@ -26,14 +49,67 @@
     </div>
 </div>
 
-<h2 class="title">Destaques da Estação</h2>
+<h2 class="title">Destaques de @safraAtual</h2>
 
-<p class="noRegister">Não há nenhum produto cadastrado no momento.</p>
+@if (!Model.Any(item => item.Produto.Safra == safraAtual))
+{
+    <p class="noRegister">Não há nenhum produto cadastrado no momento.</p>
+}
 
-<div></div>
+<div class="lista">
+    @foreach (var item in Model)
+    {
+        
+        if (item.Produto.Safra == safraAtual)
+        {
+            index++;
+            classe = index % 2 == 0 ? "a" : "b";
+            <div class="produto">
+                <button type="button" class="@classe produto-toggle" aria-expanded="false">
+                    @item.Produto.Nome
+                    <span>⌄</span>
+                </button>
+                <div class="produtores" hidden>
+                    <table>
+                        <thead>
+                            <th>Nome</th>
+                            <th>Quantidade</th>
+                        </thead>
+                        <tbody>
+                            @foreach (var rel in item.Produtores)
+                            {
+                                
+                                <tr>
+                                    <td>@(rel.Produtor?.Nome ?? "Produtor indisponível")</td>
+                                        
+                                    <td>@rel.Quantidade</td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    }
+</div>
 
 <a class="seeMore">VER MAIS</a>
 
 @section Scripts {
     <script src="~/js/slideshow.js"></script>
 }
+
+<script>
+
+    document.querySelectorAll(".produto-toggle").forEach(botao => {
+        const span = botao.querySelector("span");
+        botao.addEventListener("click", () => {
+            const lista = botao.nextElementSibling;
+            const aberto = !lista.hidden;
+            span.innerHTML = !aberto ? "⌃" : "⌄";
+            lista.hidden = aberto;
+            botao.setAttribute("aria-expanded", String(!aberto));
+        });
+    });
+</script>

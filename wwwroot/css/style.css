@@ -302,7 +302,26 @@ img {
 }
 
 
-.saveButton{
+.saveButton {
+  all: unset;
+  position: relative;
+  background-color: var(--goldencolor);
+  padding: 0.5rem 0rem;
+  border-radius: 4px;
+  color: var(--white);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  text-align: center;
+  width: 94%;
+  left: 1rem;
+}
+
+.saveButton:hover {
+  background-color: var(--yellowcolor);
+}
+
+.backButton {
   all: unset;
   position: relative;
   background-color: var(--lightgreen100);
@@ -314,7 +333,12 @@ img {
   font-size: 0.75rem;
   text-align: center;
   width: 94%;
-  left:1rem;
+  left: 1rem;
+}
+
+.backButton:hover {
+  background-color: var(--darkgreen100);
+
 }
 
 .logout {
@@ -341,15 +365,17 @@ img {
    Painel
    ========================================================== */
 .panel {
-  
-  
+
+
   background-color: rgba(104, 125, 49, 0.25);
-  width: 100vw;
-  
+  width: 70vw;
+
   height: auto;
   display: flex;
   flex-direction: column;
   padding: 16px;
+
+  margin-bottom: 10rem;
 }
 
 .panel button {
@@ -397,6 +423,7 @@ th {
 
 .left h2 {
   font-size: 30px;
+  width: 20vw;
 }
 
 .campo-horizontal {
@@ -498,7 +525,8 @@ th {
 table {
   flex: 1;
   width: 100%;
-  min-width: 480px; /* rola na horizontal em telas pequenas */
+  min-width: 480px;
+  /* rola na horizontal em telas pequenas */
   border-collapse: separate;
   border-spacing: 0;
 }
@@ -574,6 +602,7 @@ tbody td {
 
 /* Tablets em retrato / celulares grandes */
 @media (max-width: 768px) {
+
   /* Sidebar vira barra superior */
   .sidebar {
     position: static;
@@ -729,4 +758,31 @@ tbody td {
   }
 }
 
+.lista{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 10rem;
+}
 
+.lista button{
+  flex:1;
+  width: 100%;
+  color:white;
+  padding: 1rem;
+  border: none;
+  text-align: left;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.lista table thead{
+  border-spacing: -1px;
+}
+.lista table th{
+  border-radius: 0;
+  border-bottom: solid 2px black;
+  border-top: solid 2px black;
+  color: white;
+  background-color: var(--lightgreen100);
+  padding: 4px;
+}

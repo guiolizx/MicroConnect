@@ -1,10 +1,64 @@
+@model List<ProdutorHomeViewModel>;
 @{
-    ViewData["Title"] = "MicroConnect - Produtores";
+    ViewData["Title"] = "MicroConnect - Produtos";
+    int index = 1;
+    string classe = "a";
 }
-
-
 <h1 class="title">Produtores</h1>
 
 <div></div>
 
-<p class="noRegister">Não há nenhum produtor cadastrado no momento.</p>
+
+@if (!Model.Any())
+{
+    <p class="noRegister">Não há nenhum produto cadastrado no momento.</p>
+}
+
+<div class="lista">
+    @foreach (var item in Model)
+    {
+        index++;
+        classe = index % 2 == 0 ? "a" : "b";
+        <div class="produto">
+            <button type="button" class="@classe produto-toggle" aria-expanded="false">
+                @item.Produtor.Nome
+                <span>⌄</span>
+            </button>
+            <div class="produtores" hidden>
+                <table>
+                    <thead>
+                        <th>Nome</th>
+                        <th>Quantidade</th>
+                    </thead>
+                    <tbody>
+                        @foreach (var rel in item.Produtos)
+                        {
+                            
+                            <tr>
+                                <td>@(rel.Produto!.Nome ?? "Produtor indisponível")</td>
+                                        
+                                <td>@rel.Quantidade</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    
+</div>
+
+<script>
+
+    document.querySelectorAll(".produto-toggle").forEach(botao => {
+        const span = botao.querySelector("span");
+        botao.addEventListener("click", () => {
+            const lista = botao.nextElementSibling;
+            const aberto = !lista.hidden;
+            span.innerHTML = !aberto ? "⌃" : "⌄";
+            lista.hidden = aberto;
+            botao.setAttribute("aria-expanded", String(!aberto));
+        });
+    });
+</script>
