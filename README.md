@@ -27,16 +27,16 @@ A ideia central é criar um ambiente digital que aproxime produtores e consumido
 
 ## 🛠️ Tecnologias utilizadas
 
-| Tecnologia | Aplicação |
-|---|---|
-| C# | Linguagem principal da aplicação |
-| ASP.NET Core MVC | Estrutura para o desenvolvimento web |
-| .NET 8 | Plataforma de execução do projeto |
-| HTML e CSS | Estrutura e estilização das interfaces |
+| Tecnologia       | Aplicação                              |
+| ---------------- | -------------------------------------- |
+| C#               | Linguagem principal da aplicação       |
+| ASP.NET Core MVC | Estrutura para o desenvolvimento web   |
+| .NET 8           | Plataforma de execução do projeto      |
+| HTML e CSS       | Estrutura e estilização das interfaces |
 
 ## 🏗️ Estrutura do projeto
 
-A aplicação segue a organização do padrão MVC (*Model-View-Controller*), separando responsabilidades para facilitar a manutenção e a evolução do código.
+A aplicação segue a organização do padrão MVC (_Model-View-Controller_), separando responsabilidades para facilitar a manutenção e a evolução do código.
 
 ```text
 MicroConnect/
@@ -105,5 +105,7 @@ Desenvolvido por estudantes do curso de **Desenvolvimento de Software Multiplata
 
 <p align="center">
   🌱 <strong>MicroConnect</strong><br>
-  <em>Conectando produtores, aproximando pessoas.</em>
+  <em>Conectando produtores, aproximando pessoas.</em><br>
+  <strong>Feito por Fabiana Antelmi e Guilherme Oliveira.</strong><br>
+  <p>FATEC 2026-2.</p>
 </p>
