@@ -20,9 +20,9 @@
         index++;
         classe = index % 2 == 0 ? "a" : "b";
         <div class="produto">
-            <button type="button" class="@classe produto-toggle" aria-expanded="false">
+            <button type="button" class="@classe produto-toggle listadestaques" aria-expanded="false">
                 @item.Produto.Nome
-                <span>⌄</span>
+                <img class="arrows" src="~/assets/icons/seta_baixo.svg"></img>
             </button>
             <div class="produtores" hidden>
                 <table>
@@ -52,11 +52,11 @@
 <script>
 
     document.querySelectorAll(".produto-toggle").forEach(botao => {
-        const span = botao.querySelector("span");
+        const seta = botao.querySelector("img");
         botao.addEventListener("click", () => {
             const lista = botao.nextElementSibling;
             const aberto = !lista.hidden;
-            span.innerHTML = !aberto ? "⌃" : "⌄";
+            seta.src = !aberto ? "/assets/icons/seta_cima.svg" : "/assets/icons/seta_baixo.svg";
             lista.hidden = aberto;
             botao.setAttribute("aria-expanded", String(!aberto));
         });

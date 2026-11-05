@@ -1,0 +1,4 @@
+bin/
+obj/
+ca.pem
+appsettings.json
