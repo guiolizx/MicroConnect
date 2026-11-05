@@ -106,6 +106,6 @@ Desenvolvido por estudantes do curso de **Desenvolvimento de Software Multiplata
 <p align="center">
   🌱 <strong>MicroConnect</strong><br>
   <em>Conectando produtores, aproximando pessoas.</em><br>
-  <strong>Feito por Fabiana Antelmi e Guilherme Oliveira.</strong><br>
+  <strong>&copy; Feito por Fabiana Antelmi e Guilherme Oliveira.</strong><br>
   <strong>FATEC 2026-2.</strong>
 </p>
