@@ -68,6 +68,7 @@ public class DashboardController : Controller
 
         return View(new EditarProdutoModel
         {
+            IdProdutor = user.idProdutor,
             IdProduto = produto.IdProduto,
             Nome = produto.Nome,
             Safra = produto.Safra,

@@ -56,6 +56,8 @@
     </div>
 
     <button class="saveButton" type="submit">SALVAR</button>
+    <a class="delButton" asp-controller="Produto" asp-action="ExcluirProduto" asp-route-idProduto="@Model.IdProduto"
+                                    asp-route-idProdutor="@Model.IdProdutor">EXCLUIR</a>
     <a asp-controller="Dashboard" asp-action="Dashboard" class="backButton">VOLTAR</a>
 </form>
 

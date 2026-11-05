@@ -23,4 +23,24 @@ public class ClienteRepository : IClienteRepository
     {
         return _bancoContext.Cliente.FirstOrDefault(x => x.Cpf == cpf);
     }
+
+    public ClienteModel SearchById(int id)
+    {
+        return _bancoContext.Cliente.FirstOrDefault(x => x.IdCliente == id);
+    }
+
+    public void Edit(ClienteModel cliente)
+    {
+        _bancoContext.Cliente.Update(cliente);
+        _bancoContext.SaveChanges();
+    }
+    public void Delete(int id)
+    {
+        var cliente = _bancoContext.Cliente.FirstOrDefault(x => x.IdCliente == id);
+        if (cliente != null)
+        {
+            _bancoContext.Cliente.Remove(cliente);
+            _bancoContext.SaveChanges();
+        }
+    }
 }

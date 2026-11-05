@@ -8,9 +8,9 @@
 }
 
 
-<h2 style="position: relative; top:130px;" id="ds">ÁREA DO PRODUTOR</h2>
+<h2 style="position: relative; top:-20px;" id="ds">ÁREA DO PRODUTOR</h2>
 
-<div class="panel" style="position:relative; top:150px;"> 
+<div class="panel" style=""> 
     <div class="toppanel">
         <div class="left">
             <div class="campo">
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="right">
-            <a class="registerButton">ALTERAR DADOS</a>
+            <a class="registerButton" asp-controller="Auth" asp-action="EditarProdutor" asp-route-id="@Model.Produtor?.idProdutor">ALTERAR DADOS</a>
         </div>
         
     </div>
@@ -92,8 +92,7 @@
                         
                         <td class="opcoes">
                             <a class="button" asp-controller="Dashboard" asp-action="EditarProduto" asp-route-id="@item.Produto?.IdProduto">EDITAR</a>
-                            <a class="button" asp-controller="Produto" asp-action="ExcluirProduto" asp-route-idProduto="@item.Produto!.IdProduto"
-                                    asp-route-idProdutor="@Model.Produtor?.idProdutor">EXCLUIR</a>
+                            
                         </td>
                     </tr>
                 }

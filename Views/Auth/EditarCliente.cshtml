@@ -1,0 +1,61 @@
+@model RegisterClienteViewModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "MicroConnect - Editar Cliente";
+}
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+</style>
+
+<link rel="stylesheet" href="~/css/variables.css">
+<link rel="stylesheet" href="~/css/nav.css">
+<link rel="stylesheet" href="~/css/style.css">
+<h1 class="title">Cadastre-se Cliente</h1>
+
+<form class="form" asp-controller="Auth" asp-action="EditarCliente" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="Senha" />
+    <div class="inp">
+        <label for="name">Nome</label>
+        <input type="text" id="name" placeholder="Digite seu nome" asp-for="Nome">
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="inp">
+        <label for="cnpj">CPF</label>
+        <input type="text" id="CPF" placeholder="Digite seu CPF" asp-for="Cpf">
+        <span asp-validation-for="Cpf" class="text-danger"></span>
+    </div>
+    <div class="twoColumns">
+        <div class="inp">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Digite seu e-mail principal" asp-for="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <button style="width:auto; position: relative; left: 0;" class="saveButton" type="submit">SALVAR</button>
+    <a style="width:auto; position: relative; left: 0;" class="delButton" asp-controller="Auth" asp-action="DeleteCliente">EXCLUIR</a>
+    <a style="width:auto; position: relative; left: 0;" asp-controller="Dashboard" asp-action="Reserve" class="backButton">VOLTAR</a>
+
+</form>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+
+
+<script>
+    Inputmask("999.999.9990-99", {
+        definitions: {
+            '*': {
+                validator: "[A-Za-z0-9]"
+            }
+        },
+        removeMaskOnSubmit: true
+    }).mask("#CPF");
+
+    Inputmask("99 99999-9999", {
+        removeMaskOnSubmit: true
+    }).mask("#tel");
+</script>

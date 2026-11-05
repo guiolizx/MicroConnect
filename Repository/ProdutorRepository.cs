@@ -23,4 +23,35 @@ public class ProdutorRepository : IProdutorRepository
     {
         return _bancoContext.Produtor.FirstOrDefault(x => x.Cnpj== cnpj);
     }
+
+    public ProdutorModel SearchById(int id)
+    {
+        return _bancoContext.Produtor.FirstOrDefault(x => x.idProdutor == id);
+    }
+
+    public void Edit(ProdutorModel produtor)
+    {
+        var existingProdutor = _bancoContext.Produtor.FirstOrDefault(x => x.idProdutor == produtor.idProdutor);
+        Console.WriteLine($"Editing produtor with ID: {produtor.idProdutor}");
+        if (existingProdutor != null)
+        {
+            existingProdutor.Nome = produtor.Nome;
+            existingProdutor.Cnpj = produtor.Cnpj;
+            existingProdutor.Email = produtor.Email;
+            existingProdutor.Telefone = produtor.Telefone;
+            existingProdutor.Endereco = produtor.Endereco;
+
+            _bancoContext.SaveChanges();
+        }
+    }
+
+    public void Delete(int id)
+    {
+        var produtor = _bancoContext.Produtor.FirstOrDefault(x => x.idProdutor == id);
+        if (produtor != null)
+        {
+            _bancoContext.Produtor.Remove(produtor);
+            _bancoContext.SaveChanges();
+        }
+    }
 }
